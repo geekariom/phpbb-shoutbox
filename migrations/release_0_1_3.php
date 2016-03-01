@@ -12,11 +12,11 @@ namespace matthieuy\shoutbox\migrations;
 use phpbb\db\migration\migration;
 
 /**
- * Class release_0_1_0
+ * Class release_0_1_3
  *
  * @package matthieuy\shoutbox\migrations
  */
-class release_0_1_0 extends migration
+class release_0_1_3 extends migration
 {
     /**
      * Is install ?
