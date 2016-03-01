@@ -1,0 +1,13 @@
+Subject: Shoutbox
+
+Bonjour,
+
+Vous recevez cette notification car « {AUTHOR_NAME} » vous a cité dans la shoutbox sur « {SITENAME} ». Vous pouvez utiliser le lien suivant afin de la consulter.
+
+Si vous souhaitez consulter le message, veuillez cliquer sur le lien suivant :
+{U_SHOUTBOX}
+
+Si vous ne souhaitez plus recevoir de notifications lorsqu’un utilisateur vous cite, vous pouvez modifier les réglages de notification sur le lien suivant :
+{U_NOTIFICATION_SETTINGS}
+
+{EMAIL_SIG}

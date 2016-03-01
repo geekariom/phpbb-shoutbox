@@ -1,0 +1,57 @@
+services:
+    # Db tool
+    matthieuy.shoutbox.service:
+        class: matthieuy\shoutbox\services\ShoutboxManager
+        arguments:
+            - @dbal.conn
+            - @user
+            - @auth
+            - @config
+            - @cache
+            - @dispatcher
+
+    # The main controller
+    matthieuy.shoutbox.controller:
+        class: matthieuy\shoutbox\controller\ShoutboxController
+        arguments:
+            - @matthieuy.shoutbox.service
+            - @request
+            - @auth
+            - @controller.helper
+            - @template
+            - @user
+
+    # Listener
+    matthieuy.shoutbox.listener:
+        class: matthieuy\shoutbox\event\listener
+        arguments:
+            - @controller.helper
+            - @template
+            - @matthieuy.shoutbox.service
+            - @auth
+            - @config
+            - @request
+            - @user
+            - @notification_manager
+        tags:
+            - { name: event.listener }
+
+    # Notification
+    matthieuy.shoutbox.notification.type.shoutbox_quote:
+        class: matthieuy\shoutbox\notification\shoutbox_quote
+        scope: prototype
+        arguments:
+            - @controller.helper
+            - @user_loader
+            - @dbal.conn
+            - @cache.driver
+            - @user
+            - @auth
+            - @config
+            - %core.root_path%
+            - %core.php_ext%
+            - %tables.notification_types%
+            - %tables.notifications%
+            - %tables.user_notifications%
+        tags:
+            - { name: notification.type }

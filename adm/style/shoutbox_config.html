@@ -1,0 +1,57 @@
+<!-- INCLUDE overall_header.html -->
+
+<h1>{L_SETTINGS}</h1>
+
+<form id="acp_board" method="post" action="{U_ACTION}">
+	<fieldset>
+		<dl>
+			<dt><label for="shoutbox_min_interval">{L_ACP_SHOUTBOX_MIN_INTERVAL}</label></dt>
+			<dd>
+				<input id="shoutbox_min_interval" name="shoutbox_min_interval" type="number" value="{SHOUTBOX_MIN_INT}" min="3" max="60">
+			</dd>
+		</dl>
+		<dl>
+			<dt><label for="shoutbox_max_interval">{L_ACP_SHOUTBOX_MAX_INTERVAL}</label></dt>
+			<dd>
+				<input id="shoutbox_max_interval" name="shoutbox_max_interval" type="number" value="{SHOUTBOX_MAX_INT}" min="5" max="300">
+			</dd>
+		</dl>
+		<dl>
+			<dt><label>{L_ACP_SHOUTBOX_QUOTE}</label></dt>
+			<dd>
+				<input type="radio" class="radio" name="shoutbox_quote" value="1" <!-- IF SHOUTBOX_QUOTE -->checked="checked"<!-- ENDIF -->> {L_YES} &nbsp;
+				<input type="radio" class="radio" name="shoutbox_quote" value="0" <!-- IF not SHOUTBOX_QUOTE -->checked="checked"<!-- ENDIF -->> {L_NO}
+			</dd>
+		</dl>
+		<dl>
+			<dt><label>{L_ACP_SHOUTBOX_SCROLL}</label></dt>
+			<dd>
+				<input type="radio" class="radio" name="shoutbox_scroll" value="1" <!-- IF SHOUTBOX_SCROLL -->checked="checked"<!-- ENDIF -->> {L_YES} &nbsp;
+				<input type="radio" class="radio" name="shoutbox_scroll" value="0" <!-- IF not SHOUTBOX_SCROLL -->checked="checked"<!-- ENDIF -->> {L_NO}
+			</dd>
+		</dl>
+		<dl>
+			<dt><label>{L_ACP_SHOUTBOX_TIMEAGO}</label></dt>
+			<dd>
+				<input type="radio" class="radio" name="shoutbox_timeago" value="1" <!-- IF SHOUTBOX_TIMEAGO -->checked="checked"<!-- ENDIF -->> {L_YES} &nbsp;
+				<input type="radio" class="radio" name="shoutbox_timeago" value="0" <!-- IF not SHOUTBOX_TIMEAGO -->checked="checked"<!-- ENDIF -->> {L_NO}
+			</dd>
+		</dl>
+		<dl>
+			<dt><label>{L_ACP_SHOUTBOX_SOUND}</label></dt>
+			<dd>
+				<input type="radio" class="radio" name="shoutbox_sound" value="1" <!-- IF SHOUTBOX_SOUND -->checked="checked"<!-- ENDIF -->> {L_YES} &nbsp;
+				<input type="radio" class="radio" name="shoutbox_sound" value="0" <!-- IF not SHOUTBOX_SOUND -->checked="checked"<!-- ENDIF -->> {L_NO}
+			</dd>
+		</dl>
+
+
+		<p class="submit-buttons">
+			<input class="button1" type="submit" name="submit" value="{L_SUBMIT}">&nbsp;
+			<input class="button2" type="reset" name="reset" value="{L_RESET}">
+		</p>
+
+		{S_FORM_TOKEN}
+	</fieldset>
+</form>
+<!-- INCLUDE overall_footer.html -->

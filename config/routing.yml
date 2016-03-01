@@ -1,0 +1,10 @@
+matthieuy_shoutbox_ajax:
+    path: /shoutbox/ajax
+    defaults: { _controller: matthieuy.shoutbox.controller:ajax }
+    methods: ['POST']
+
+matthieuy_shoutbox_fullscreen:
+    path: /shoutbox
+    defaults: { _controller: matthieuy.shoutbox.controller:fullscreen }
+    methods: ['GET']
+

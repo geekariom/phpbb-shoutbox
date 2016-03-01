@@ -1,0 +1,86 @@
+<div class="forabg shoutbox{%if SHOUTBOX_FULL %} shoutbox-full{% endif %}" id="shoutbox">
+    <div class="inner">
+        <ul class="topiclist">
+            <li class="header">
+                <dl>
+                    <dt><a href="{U_SHOUTBOX}">{L_SHOUTBOX}</a></dt>
+                    <dd></dd>
+                </dl>
+            </li>
+        </ul>
+        {% if SHOUTBOX_CAN_SEND %}
+        <ul class="topiclist">
+            <li class="shoutbox-header">
+                <form autocomplete="off">
+                    <input type="text" class="inputbox" id="shoutbox-msg" value="">
+                    <input type="hidden" id="shoutbox-lastmsg" value="{SHOUTBOX_LAST_MSG}">
+                </form>
+
+                <div class="shoutbox-btn">
+                    <input type="button" title="{L_BBCODE_B_HELP}"  class="button1 btn-bold" value=" B ">
+                    <input type="button" title="{L_BBCODE_I_HELP}" class="button1 btn-italic" value=" I ">
+                    <input type="button" title="{L_BBCODE_U_HELP}" class="button1 btn-underline" value=" U ">
+                    <input type="button" title="{L_SHOUTBOX_STRIKE}" class="button1 btn-strike" value=" S ">
+                    <input type="button" title="{L_BBCODE_W_HELP}" class="button1 btn-link" value=" URL ">
+                    <input type="button" title="{L_MORE_SMILIES}" value="{L_SMILIES}" class="button1 btn-smiley" >
+                    <input type="button" title="{L_BBCODE_S_HELP}" value="{L_FONT_COLOR}" class="button1 btn-colors" />
+                    {% if SHOUTBOX_VOLUME %}
+                        <input type="image"  title="{L_SHOUTBOX_SOUND_DISABLE}" class="button1 btn-mute" src="{U_SHOUTBOX_THEME}/images/mute.png" alt="{L_SHOUTBOX_SOUND_DISABLE}">
+                    {% else %}
+                        <input type="image"  title="{L_SHOUTBOX_SOUND_ENABLE}" class="button1 btn-mute" src="{U_SHOUTBOX_THEME}/images/sound.png" alt="{L_SHOUTBOX_SOUND_ENABLE}">
+                    {% endif %}
+                    <div id="color-pane"></div>
+                    <div id="smileys-list"></div>
+                </div>
+            </li>
+        </ul>
+        {% endif %}
+        <ul class="topiclist forums" id="shoutbox-content">
+            <li>
+                {% for message in shoutbox_msg %}
+                <div id="shoutbox-msg-{{ message.ID }}" data-id="{{ message.ID }}"{% if message.QUOTE %} class="quote"{% endif %}>
+                    <span class="infos">
+                        <time datetime="{{ message.DATE }}"{% if message.TIMEAGO %} class="timeago"{% endif %}>{{ message.DATE_USER }}</time> {L_POST_BY_AUTHOR}
+                        <a class="author">{{ message.USER }}</a>&nbsp;:&nbsp;
+                    </span>
+                    {{ message.TEXT }}
+                    {% if message.CAN_DELETE %}
+                        <img src="ext/matthieuy/shoutbox/styles/prosilver/theme/images/delete.png" class="delete" title="{L_SHOUTBOX_DELETE_MSG}" alt="Delete">
+                    {% endif %}
+                </div>
+                {% endfor %}
+            </li>
+        </ul>
+    </div>
+</div>
+<script>
+    var shoutbox_opts = {
+        ajax: '{U_SHOUTBOX_AJAX}',
+        i18n: {
+            by: "{L_POST_BY_AUTHOR}",
+            del: "{L_SHOUTBOX_DELETE_MSG}",
+            sound_enable: '{L_SHOUTBOX_SOUND_ENABLE}',
+            sound_disable: '{L_SHOUTBOX_SOUND_DISABLE}',
+            suffixAgo: "{L_SHOUTBOX_AGO_SUFFIX}",
+            prefixAgo: "{L_SHOUTBOX_AGO_PREFIX}",
+            seconds: "{L_SHOUTBOX_AGO_SECONDS}",
+            minute: "{L_SHOUTBOX_AGO_MINUTE}",
+            minutes: "{L_SHOUTBOX_AGO_MINUTES}",
+            hour: "{L_SHOUTBOX_AGO_HOUR}",
+            hours: "{L_SHOUTBOX_AGO_HOURS}"
+        },
+        timeago: {SHOUTBOX_TIMEAGO},
+        quote: {SHOUTBOX_QUOTE},
+        scroll: {SHOUTBOX_SCROLL},
+        min: {SHOUTBOX_MIN_INTERVAL},
+        max: {SHOUTBOX_MAX_INTERVAL},
+        sound: {SHOUTBOX_SOUND},
+        theme_path: '{U_SHOUTBOX_THEME}',
+        fullscreen: {% if SHOUTBOX_FULL %}true{% else %}false{% endif %}
+    };
+</script>
+<!-- IF not $INCLUDED_JQUERYTIMEAGOJS and SHOUTBOX_TIMEAGO -->
+    <!-- INCLUDEJS jquery.timeago.js -->
+    <!-- DEFINE $INCLUDED_JQUERYTIMEAGOJS = true -->
+<!-- ENDIF -->
+<!-- INCLUDEJS shoutbox.js -->

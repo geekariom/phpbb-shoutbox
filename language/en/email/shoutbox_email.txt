@@ -1,0 +1,13 @@
+Subject: Shoutbox
+
+Hello {USERNAME},
+
+You are receiving this notification because "{AUTHOR_NAME}" quoted you in the shoutbox at "{SITENAME}". You can use the following link to view it.
+
+If you want to view the quoted, click the following link:
+{U_SHOUTBOX}
+
+If you no longer wish to receive updates about replies quoting you, please update your notification settings here:
+{U_NOTIFICATION_SETTINGS}
+
+{EMAIL_SIG}
